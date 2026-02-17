@@ -1,0 +1,82 @@
+# ESP32 Captive Portal - Free WiFi
+
+[![ESP32](https://img.shields.io/badge/ESP32-Hack-blue?logo=espressif)](https://www.espressif.com/)
+[![PlatformIO](https://img.shields.io/badge/PlatformIO-IDE-orange)](https://platformio.org/)
+[![Arduino](https://img.shields.io/badge/Arduino-C++-00979D?logo=arduino)](https://www.arduino.cc/)
+
+ESP32 Captive Portal - создание открытой точки доступа WiFi с перехватом всех запросов на страницу авторизации. При подключении пользователь видит стильную форму ввода email и пароля, которые сразу отображаются в Serial мониторе.
+
+![Demo](https://img.shields.io/badge/demo-working-brightgreen)
+
+## 📸 Скриншоты
+
+| Страница входа | Успешное подключение | Монитор порта |
+|----------------|---------------------|---------------|
+| ![Login](https://via.placeholder.com/200x400?text=Login+Page) | ![Success](https://via.placeholder.com/200x400?text=Success) | ![Serial](https://via.placeholder.com/600x200?text=Serial+Monitor+Output) |
+
+## 🚀 Возможности
+
+- 📶 **Открытая сеть WiFi** - никаких паролей, любой может подключиться
+- 🔄 **Captive Portal** - перехват всех DNS запросов и перенаправление на страницу входа
+- 📱 **Адаптивный дизайн** - красиво выглядит на телефонах, планшетах и компьютерах
+- 🎨 **Современный UI** - градиенты, анимации, плавные переходы
+- 📊 **Детальный мониторинг** - вся информация о подключениях в Serial мониторе
+- 🔍 **Определение устройств** - автоматическое распознавание типа устройства (iPhone, Android, ПК)
+- 📈 **Статистика** - счетчик подключений, IP адреса, временные метки
+
+## 🛠️ Компоненты
+
+- ESP32 (любая модель)
+- Без внешних компонентов
+- Питание через USB
+
+## 📋 Требования
+
+- ESP32 board package для Arduino IDE
+- Библиотеки (устанавливаются автоматически):
+  - WiFi.h
+  - WebServer.h
+  - DNSServer.h
+
+## 🔧 Установка и запуск
+
+### Вариант 1: Arduino IDE
+
+1. **Установите ESP32 в Arduino IDE:**
+   - Откройте Arduino IDE
+   - Перейдите в **Файл → Настройки**
+   - В поле "Дополнительные ссылки для менеджера плат" добавьте:
+     ```
+     https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+     ```
+   - Перейдите в **Инструменты → Плата → Менеджер плат**
+   - Найдите "ESP32" и установите
+
+2. **Скачайте и откройте проект:**
+   - Скачайте этот репозиторий
+   - Откройте `esp32_captive_portal.ino` в Arduino IDE
+
+3. **Настройте (опционально):**
+   - При желании измените название сети в строке:
+     ```cpp
+     const char* ssid = "Free WiFi";
+     ```
+
+4. **Загрузите на ESP32:**
+   - Подключите ESP32 через USB
+   - Выберите плату (обычно "ESP32 Dev Module")
+   - Выберите правильный COM порт
+   - Нажмите "Загрузить"
+
+5. **Откройте Serial монитор:**
+   - Скорость: 115200 бод
+   - Наслаждайтесь выводом информации
+
+### Вариант 2: PlatformIO
+
+1. **Создайте новый проект:**
+   ```bash
+   platformio init --board esp32dev
+
+   platformio run --target upload
+   platformio device monitor
