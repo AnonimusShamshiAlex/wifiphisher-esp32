@@ -77,4 +77,5 @@ ESP32 Captive Portal - создание открытой точки доступ
    platformio init --board esp32dev
 
    platformio run --target upload
+   
    platformio device monitor
